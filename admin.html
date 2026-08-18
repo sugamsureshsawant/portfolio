@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Panel | Sugam Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111827;
+      --bg2: #1f2937;
+      --bg3: #263248;
+      --green: #00ff41;
+      --cyan: #00d4ff;
+      --red: #ff006e;
+      --yellow: #ffd60a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(0, 255, 65, 0.2);
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--green);
+      border-radius: 3px;
+    }
+
+    /* -------- LOGIN SCREEN -------- */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 65, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+        var(--bg);
+    }
+
+    .login-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 255, 65, 0.05);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .login-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .login-title {
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .login-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .login-field {
+      margin-bottom: 20px;
+    }
+
+    .login-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .login-input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.1em;
+    }
+
+    .login-input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1);
+    }
+
+    .login-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00ff41, #00c836);
+      color: #080b10;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .login-btn:hover {
+      box-shadow: 0 6px 25px rgba(0, 255, 65, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .login-error {
+      color: var(--red);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-top: 12px;
+      text-align: center;
+      display: none;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      25% {
+        transform: translateX(-8px)
+      }
+
+      75% {
+        transform: translateX(8px)
+      }
+    }
+
+    .login-hint {
+      margin-top: 20px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 10px;
+      border: 1px dashed rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+    }
+
+    /* -------- ADMIN PANEL -------- */
+    #admin-panel {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .admin-nav {
+      background: rgba(8, 11, 16, 0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+    }
+
+    .admin-logo {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7)
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(0, 255, 65, 0)
+      }
+    }
+
+    .admin-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .admin-user {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .logout-btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: rgba(255, 0, 110, 0.1);
+      border: 1px solid rgba(255, 0, 110, 0.3);
+      color: var(--red);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover {
+      background: rgba(255, 0, 110, 0.2);
+    }
+
+    .back-btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* -------- ADMIN CONTENT -------- */
+    .admin-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .admin-header {
+      margin-bottom: 40px;
+    }
+
+    .admin-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .admin-title span {
+      color: var(--green);
+    }
+
+    .admin-subtitle {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* Stats bar */
+    .admin-stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .admin-stat {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      min-width: 120px;
+    }
+
+    .admin-stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .admin-stat-label {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* -------- ADD CERT FORM — ENHANCED -------- */
+    .add-cert-section {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .add-cert-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), var(--cyan), transparent);
+      animation: shimmer-line 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer-line {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .section-title-admin {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--green);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title-admin .title-badge {
+      background: rgba(0,255,65,0.1);
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      color: var(--green);
+      margin-left: auto;
+    }
+
+    /* Two-column layout: form + live preview */
+    .cert-form-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-label .lbl-icon { font-size: 0.9rem; }
+    .form-label .lbl-req { color: var(--red); font-size: 0.65rem; }
+
+    .form-input,
+    .form-select {
+      background: rgba(8, 11, 16, 0.6);
+      border: 1px solid rgba(0, 255, 65, 0.15);
+      border-radius: 10px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      outline: none;
+      width: 100%;
+      transition: all 0.25s;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.08), inset 0 0 12px rgba(0,255,65,0.03);
+      background: rgba(8, 11, 16, 0.9);
+    }
+
+    .form-input:not(:placeholder-shown):valid {
+      border-color: rgba(0,255,65,0.35);
+    }
+
+    .form-input::placeholder { color: rgba(148,163,184,0.5); }
+    .form-select option { background: #1f2937; }
+
+    /* Category pills */
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0 4px;
+    }
+
+    .cat-pill {
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      cursor: pointer;
+      border: 1px solid;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .cat-pill:hover { transform: translateY(-1px); filter: brightness(1.2); }
+
+    .cat-pill[data-cat="Security"]  { background: rgba(255,0,110,0.12); border-color: rgba(255,0,110,0.35); color: #ff6ea8; }
+    .cat-pill[data-cat="Web Dev"]   { background: rgba(0,212,255,0.1);  border-color: rgba(0,212,255,0.35); color: var(--cyan); }
+    .cat-pill[data-cat="Python"]    { background: rgba(255,214,10,0.1); border-color: rgba(255,214,10,0.35); color: var(--yellow); }
+    .cat-pill[data-cat="Network"]   { background: rgba(139,92,246,0.12);border-color: rgba(139,92,246,0.35); color: #a78bfa; }
+    .cat-pill[data-cat="CTF"]       { background: rgba(0,255,65,0.1);   border-color: rgba(0,255,65,0.35);  color: var(--green); }
+    .cat-pill[data-cat="Cloud"]     { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.35); color: #60a5fa; }
+    .cat-pill[data-cat="Other"]     { background: rgba(148,163,184,0.1);border-color: rgba(148,163,184,0.3); color: #94a3b8; }
+
+    .cat-pill.selected { filter: brightness(1.3); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+
+    /* File upload */
+    .file-upload-zone {
+      border: 2px dashed rgba(0,255,65,0.2);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(0,255,65,0.01);
+      position: relative;
+    }
+
+    .file-upload-zone:hover,
+    .file-upload-zone.drag-over {
+      border-color: var(--green);
+      background: rgba(0, 255, 65, 0.04);
+      box-shadow: inset 0 0 20px rgba(0,255,65,0.03);
+    }
+
+    .upload-icon { font-size: 2.2rem; margin-bottom: 8px; display: block; }
+    .upload-title { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+    .upload-sub { font-size: 0.78rem; color: #94a3b8; }
+    .upload-browse { color: var(--green); cursor: pointer; text-decoration: none; border-bottom: 1px dashed rgba(0,255,65,0.4); }
+
+    .file-preview {
+      margin-top: 14px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: rgba(8,11,16,0.7);
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .file-preview.show { display: flex; }
+
+    .file-preview-thumb {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(0,255,65,0.2);
+    }
+
+    .file-preview-name {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--green);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .file-remove {
+      background: rgba(255,0,110,0.1);
+      border: 1px solid rgba(255,0,110,0.3);
+      color: var(--red);
+      cursor: pointer;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      padding: 3px 8px;
+      transition: all 0.2s;
+    }
+    .file-remove:hover { background: rgba(255,0,110,0.25); }
+
+    /* ---- Live Preview Card ---- */
+    .live-preview-panel {
+      position: sticky;
+      top: 84px;
+    }
+
+    .live-preview-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .live-preview-label::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .preview-cert-card {
+      background: linear-gradient(135deg, #1a2035, #0f1623);
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transition: all 0.3s;
+    }
+
+    .preview-cert-card:hover {
+      border-color: rgba(0,255,65,0.4);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 20px rgba(0,255,65,0.05);
+    }
+
+    .preview-img-area {
+      width: 100%;
+      height: 130px;
+      background: linear-gradient(135deg, #0d1117, #1a2035);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-img-area img {
+      width: 100%; height: 100%; object-fit: cover;
+      position: absolute; inset: 0;
+    }
+
+    .preview-img-area .preview-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,22,35,0.8) 0%, transparent 60%);
+    }
+
+    .preview-body { padding: 16px; }
+
+    .preview-cert-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .preview-cert-issuer {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      margin-bottom: 2px;
+    }
+
+    .preview-cert-year {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .preview-cert-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+
+    /* Submit area */
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #00ff41, #00c836);
+      color: #080b10;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .submit-btn:hover { box-shadow: 0 6px 24px rgba(0, 255, 65, 0.35); transform: translateY(-2px); }
+    .submit-btn:hover::after { opacity: 1; }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.2);
+      color: #94a3b8;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .reset-btn:hover { border-color: #94a3b8; color: var(--text); }
+
+    .form-msg {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .form-msg.success {
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      color: var(--green);
+    }
+
+    .form-msg.error {
+      background: rgba(255, 0, 110, 0.1);
+      border: 1px solid rgba(255, 0, 110, 0.3);
+      color: var(--red);
+    }
+
+    /* Responsive for cert layout */
+    @media (max-width: 860px) {
+      .cert-form-layout { grid-template-columns: 1fr; }
+      .live-preview-panel { display: none; }
+    }
+
+    /* -------- CERT LIST -------- */
+    .cert-list-section {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .cert-list-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .cert-count {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .clear-all-btn {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: rgba(255, 0, 110, 0.1);
+      border: 1px solid rgba(255, 0, 110, 0.2);
+      color: var(--red);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .clear-all-btn:hover {
+      background: rgba(255, 0, 110, 0.2);
+    }
+
+    /* Admin cert cards */
+    .admin-cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .admin-cert-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .admin-cert-card:hover {
+      border-color: rgba(0, 255, 65, 0.3);
+    }
+
+    .admin-cert-thumb {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      background: #0d1117;
+      display: block;
+    }
+
+    .admin-cert-pdf-thumb {
+      width: 100%;
+      height: 110px;
+      background: #0d1117;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      color: #94a3b8;
+      font-size: 1.5rem;
+    }
+
+    .admin-cert-pdf-thumb span {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+    }
+
+    .admin-cert-body {
+      padding: 14px;
+    }
+
+    .admin-cert-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .admin-cert-issuer {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      margin-bottom: 2px;
+    }
+
+    .admin-cert-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .admin-cert-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cert-category-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      color: var(--cyan);
+    }
+
+    .admin-delete-btn {
+      background: rgba(255, 0, 110, 0.1);
+      border: 1px solid rgba(255, 0, 110, 0.2);
+      color: var(--red);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s;
+    }
+
+    .admin-delete-btn:hover {
+      background: rgba(255, 0, 110, 0.25);
+    }
+
+    /* Empty state */
+    .admin-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .admin-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* Change password section */
+    .change-pw-section {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+
+    .pw-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 16px;
+      align-items: end;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--green);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.error {
+      color: var(--red);
+      border-color: rgba(255, 0, 110, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pw-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .login-box {
+        padding: 32px 24px;
+      }
+
+      .admin-content {
+        padding: 24px 16px;
+      }
+
+      .add-cert-section,
+      .cert-list-section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="login-header">
+        <span class="login-icon">🔒</span>
+        <h1 class="login-title">&gt;_ Admin Access</h1>
+        <p class="login-sub">Sugam's Portfolio Admin Panel</p>
+      </div>
+
+      <div class="login-field">
+        <label class="login-label" for="pw-input">PASSWORD</label>
+        <input type="password" id="pw-input" class="login-input" placeholder="Enter password..."
+          autocomplete="off" />
+      </div>
+
+      <button class="login-btn" id="login-btn">Authenticate &nbsp;→</button>
+      <p class="login-error" id="login-error">❌ Wrong password. Try again.</p>
+      <div class="login-hint">💡 Default Password: <strong style="color:var(--green)">sugam@admin</strong></div>
+
+    </div>
+  </div>
+
+  <!-- ===== ADMIN PANEL ===== -->
+  <div id="admin-panel">
+    <!-- Nav -->
+    <nav class="admin-nav">
+      <div class="admin-logo">
+        <div class="admin-logo-dot"></div>
+        &gt;_ Admin Panel
+      </div>
+      <div class="admin-nav-right">
+        <a href="/" class="back-btn">← View Portfolio</a>
+        <span class="admin-user">logged in as sugam</span>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="admin-content">
+      <div class="admin-header">
+        <h1 class="admin-title">Certificate <span>Manager</span></h1>
+        <p class="admin-subtitle">Add, view, and delete certificates shown on your public portfolio</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="admin-stat-num" id="stat-total">0</div>
+          <div class="admin-stat-label">Total Certs</div>
+        </div>
+      </div>
+
+      <!-- Add Certificate Form — Enhanced -->
+      <div class="add-cert-section">
+        <h2 class="section-title-admin">
+          <span>🪪</span> Add New Certificate
+          <span class="title-badge">LIVE PREVIEW</span>
+        </h2>
+
+        <div class="cert-form-layout">
+          <!-- Left: Form Fields -->
+          <div class="cert-form-fields">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="lbl-icon">📋</span> Certificate Name
+                  <span class="lbl-req">★ required</span>
+                </label>
+                <input type="text" id="add-name" class="form-input" placeholder="e.g., Google Cybersecurity Certificate" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="lbl-icon">🏢</span> Issuer / Platform
+                  <span class="lbl-req">★ required</span>
+                </label>
+                <input type="text" id="add-issuer" class="form-input" placeholder="e.g., Coursera, EC-Council" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="lbl-icon">📅</span> Year
+                  <span class="lbl-req">★ required</span>
+                </label>
+                <input type="text" id="add-year" class="form-input" placeholder="e.g., 2025" maxlength="4" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label"><span class="lbl-icon">🔗</span> Credential URL (optional)</label>
+                <input type="url" id="add-url" class="form-input" placeholder="https://verify.example.com/..." />
+              </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="form-group" style="margin-bottom:18px">
+              <label class="form-label"><span class="lbl-icon">🏷️</span> Category</label>
+              <div class="category-pills" id="category-pills">
+                <div class="cat-pill selected" data-cat="Security">🔐 Cybersecurity</div>
+                <div class="cat-pill" data-cat="Web Dev">🌐 Web Dev</div>
+                <div class="cat-pill" data-cat="Python">🐍 Python</div>
+                <div class="cat-pill" data-cat="Network">📡 Networking</div>
+                <div class="cat-pill" data-cat="CTF">🚩 CTF</div>
+                <div class="cat-pill" data-cat="Cloud">☁️ Cloud</div>
+                <div class="cat-pill" data-cat="Other">📌 Other</div>
+              </div>
+              <input type="hidden" id="add-category" value="Security" />
+            </div>
+
+            <!-- Image upload -->
+            <div class="form-group full" style="margin-bottom:20px">
+              <label class="form-label"><span class="lbl-icon">🖼️</span> Certificate Image / PDF (optional)</label>
+              <div class="file-upload-zone" id="drop-zone">
+                <input type="file" id="file-input" accept="image/*,.pdf" style="display:none" />
+                <span class="upload-icon">📤</span>
+                <p class="upload-title">Drag & drop your certificate</p>
+                <p class="upload-sub">or <label for="file-input" class="upload-browse">browse files</label> — JPG, PNG, PDF supported</p>
+              </div>
+              <div class="file-preview" id="file-preview">
+                <img id="file-thumb" class="file-preview-thumb" src="" alt="preview" />
+                <span class="file-preview-name" id="file-name-display">file.jpg</span>
+                <button class="file-remove" id="file-remove-btn" title="Remove file">✕ Remove</button>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="submit-btn" id="add-cert-btn">💾 Save Certificate</button>
+              <button class="reset-btn" id="reset-form-btn">↺ Clear</button>
+              <span class="form-msg" id="form-msg"></span>
+            </div>
+          </div>
+
+          <!-- Right: Live Preview -->
+          <div class="live-preview-panel">
+            <div class="live-preview-label">Live Preview</div>
+            <div class="preview-cert-card" id="preview-card">
+              <div class="preview-img-area" id="preview-img-area">
+                <span id="preview-emoji">🎓</span>
+                <div class="preview-overlay"></div>
+              </div>
+              <div class="preview-body">
+                <div class="preview-cert-name" id="preview-name">Certificate Name</div>
+                <div class="preview-cert-issuer" id="preview-issuer">Issuer Platform</div>
+                <div class="preview-cert-year" id="preview-year">2025</div>
+                <span class="preview-cert-tag" id="preview-tag" style="background:rgba(255,0,110,0.12);border-color:rgba(255,0,110,0.35);color:#ff6ea8">🔐 Cybersecurity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate List -->
+      <div class="cert-list-section">
+        <div class="cert-list-header">
+          <h2 class="section-title-admin" style="margin:0">📜 Saved Certificates</h2>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span class="cert-count" id="cert-count-label">0 certificates</span>
+            <button class="clear-all-btn" id="clear-all-btn">Clear All</button>
+          </div>
+        </div>
+        <div class="admin-cert-grid" id="admin-cert-grid">
+          <!-- Populated by JS -->
+        </div>
+        <div class="admin-empty" id="admin-empty">
+          <span class="admin-empty-icon">📭</span>
+          <p>No certificates yet. Add your first one above!</p>
+        </div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="change-pw-section">
+        <h2 class="section-title-admin">🔑 Change Password</h2>
+        <div class="pw-form-grid">
+          <div class="form-group">
+            <label class="form-label">New Password</label>
+            <input type="password" id="new-pw" class="form-input" placeholder="New password" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" id="confirm-pw" class="form-input" placeholder="Confirm password" />
+          </div>
+          <button class="submit-btn" id="change-pw-btn" style="height:44px;align-self:end">Update</button>
+        </div>
+        <p class="form-msg" id="pw-msg" style="margin-top:12px;display:none"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">
+    <span id="toast-icon">✓</span>
+    <span id="toast-text">Done!</span>
+  </div>
+
+  <script>
+    // ============================================================
+    // ADMIN PANEL — Fully self-contained JS
+    // ============================================================
+
+    const STORAGE_KEY = 'portfolio_certs';
+
+    // ---- Auth ----
+    function getAuthPassword() {
+      return sessionStorage.getItem('admin_password') || '';
+    }
+
+    function isLoggedIn() {
+      return sessionStorage.getItem('admin_auth') === 'true' && !!getAuthPassword();
+    }
+
+    async function showPanel() {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'block';
+      await migrateLocalCertificates();
+      await renderCertList();
+    }
+
+    function hidePanel() {
+      sessionStorage.removeItem('admin_auth');
+      const pwEl = document.getElementById('pw-input');
+      if (pwEl) pwEl.value = '';
+      if (window.location.protocol === 'file:') {
+        window.location.replace('index.html');
+      } else {
+        window.location.replace('/');
+      }
+    }
+
+    // Security check on browser back/forward (bfcache / pageshow)
+    window.addEventListener('pageshow', (event) => {
+      if (!isLoggedIn()) {
+        document.getElementById('admin-panel').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'flex';
+        const pwEl = document.getElementById('pw-input');
+        if (pwEl) pwEl.value = '';
+        if (event.persisted && window.location.protocol !== 'file:') {
+          window.location.replace('/');
+        }
+      }
+    });
+
+    // Auto-login if session active
+    if (isLoggedIn()) showPanel();
+
+    // ---- Login ----
+    const pwInput = document.getElementById('pw-input');
+    const loginBtn = document.getElementById('login-btn');
+    const loginError = document.getElementById('login-error');
+
+    async function attemptLogin() {
+      const val = pwInput.value.trim();
+      if (!val) return;
+      loginBtn.disabled = true;
+      try {
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: val })
+        });
+        if (!response.ok) throw new Error('Invalid password');
+        sessionStorage.setItem('admin_auth', 'true');
+        sessionStorage.setItem('admin_password', val);
+        loginError.style.display = 'none';
+        pwInput.value = '';
+        await showPanel();
+      } catch (e) {
+        loginError.style.display = 'block';
+        pwInput.value = '';
+        pwInput.focus();
+      } finally {
+        loginBtn.disabled = false;
+      }
+    }
+
+    loginBtn.addEventListener('click', attemptLogin);
+    pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+
+    // ---- Logout ----
+    document.getElementById('logout-btn').addEventListener('click', hidePanel);
+
+    // ============================================================
+    // CATEGORY PILLS
+    // ============================================================
+    const CAT_STYLES = {
+      'Security':  { bg: 'rgba(255,0,110,0.12)',   border: 'rgba(255,0,110,0.35)',   color: '#ff6ea8',   emoji: '🔐' },
+      'Web Dev':   { bg: 'rgba(0,212,255,0.1)',    border: 'rgba(0,212,255,0.35)',   color: '#00d4ff',   emoji: '🌐' },
+      'Python':    { bg: 'rgba(255,214,10,0.1)',   border: 'rgba(255,214,10,0.35)',  color: '#ffd60a',   emoji: '🐍' },
+      'Network':   { bg: 'rgba(139,92,246,0.12)',  border: 'rgba(139,92,246,0.35)', color: '#a78bfa',   emoji: '📡' },
+      'CTF':       { bg: 'rgba(0,255,65,0.1)',     border: 'rgba(0,255,65,0.35)',   color: '#00ff41',   emoji: '🚩' },
+      'Cloud':     { bg: 'rgba(59,130,246,0.1)',   border: 'rgba(59,130,246,0.35)', color: '#60a5fa',   emoji: '☁️' },
+      'Other':     { bg: 'rgba(148,163,184,0.1)',  border: 'rgba(148,163,184,0.3)', color: '#94a3b8',   emoji: '📌' },
+    };
+
+    const categoryInput = document.getElementById('add-category');
+    const pills = document.querySelectorAll('.cat-pill');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        categoryInput.value = pill.dataset.cat;
+        updateLivePreview();
+      });
+    });
+
+    // ============================================================
+    // LIVE PREVIEW
+    // ============================================================
+    function updateLivePreview() {
+      const name    = document.getElementById('add-name').value.trim() || 'Certificate Name';
+      const issuer  = document.getElementById('add-issuer').value.trim() || 'Issuer Platform';
+      const year    = document.getElementById('add-year').value.trim() || '2025';
+      const cat     = categoryInput.value || 'Security';
+      const style   = CAT_STYLES[cat] || CAT_STYLES['Other'];
+
+      document.getElementById('preview-name').textContent   = name;
+      document.getElementById('preview-issuer').textContent = issuer;
+      document.getElementById('preview-year').textContent   = year;
+
+      // Update tag
+      const tag = document.getElementById('preview-tag');
+      tag.textContent = `${style.emoji} ${cat}`;
+      tag.style.background   = style.bg;
+      tag.style.borderColor  = style.border;
+      tag.style.color        = style.color;
+
+      // Update image area
+      const imgArea = document.getElementById('preview-img-area');
+      const existingImg = imgArea.querySelector('img');
+      if (currentFileData && currentFileData !== '__pdf__') {
+        if (!existingImg) {
+          const img = document.createElement('img');
+          imgArea.insertBefore(img, imgArea.firstChild);
+          img.src = currentFileData;
+          document.getElementById('preview-emoji').style.display = 'none';
+        } else {
+          existingImg.src = currentFileData;
+          document.getElementById('preview-emoji').style.display = 'none';
+        }
+      } else {
+        if (existingImg) existingImg.remove();
+        document.getElementById('preview-emoji').style.display = '';
+        document.getElementById('preview-emoji').textContent = style.emoji + '\u200A';
+      }
+    }
+
+    // Wire live preview to inputs
+    ['add-name','add-issuer','add-year'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', updateLivePreview);
+    });
+
+    // ============================================================
+    // CERTIFICATE CRUD — Vercel Blob-backed API
+    // ============================================================
+    let serverCerts = [];
+
+    async function getCerts() {
+      const response = await fetch('/api/certificates', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Unable to load certificates');
+      serverCerts = await response.json();
+      return Array.isArray(serverCerts) ? serverCerts : [];
+    }
+
+    async function apiRequest(method, body) {
+      const response = await fetch('/api/certificates', {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-password': getAuthPassword()
+        },
+        body: body ? JSON.stringify(body) : undefined
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Request failed');
+      return data;
+    }
+
+    async function migrateLocalCertificates() {
+      // One-time migration of certificates that were previously stored in this browser.
+      try {
+        const localRaw = localStorage.getItem(STORAGE_KEY);
+        if (!localRaw) return;
+        const localCerts = JSON.parse(localRaw);
+        if (!Array.isArray(localCerts) || localCerts.length === 0) return;
+
+        const remote = await getCerts();
+        if (remote.length > 0) return;
+
+        for (const cert of localCerts) {
+          const file = cert.fileData && cert.fileData !== '__pdf__'
+            ? { data: cert.fileData, name: 'certificate-image' }
+            : null;
+          await apiRequest('POST', {
+            id: cert.id,
+            name: cert.name,
+            issuer: cert.issuer,
+            year: cert.year,
+            category: cert.category,
+            url: cert.url,
+            file
+          });
+        }
+        localStorage.removeItem(STORAGE_KEY);
+        showToast('Existing certificates migrated online!');
+      } catch (e) {
+        console.warn('Certificate migration skipped:', e);
+      }
+    }
+
+    async function updateStats() {
+      try {
+        const certs = await getCerts();
+        const n = certs.length;
+        document.getElementById('stat-total').textContent = n;
+        document.getElementById('cert-count-label').textContent = `${n} certificate${n !== 1 ? 's' : ''}`;
+      } catch (e) {
+        document.getElementById('stat-total').textContent = '—';
+        document.getElementById('cert-count-label').textContent = 'Unable to load';
+      }
+    }
+
+    // ---- File upload ----
+    let currentFileData = null;
+    let currentFileName = null;
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const filePreview = document.getElementById('file-preview');
+    const fileThumb = document.getElementById('file-thumb');
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const fileRemoveBtn = document.getElementById('file-remove-btn');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) handleFile(file);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files[0]) handleFile(fileInput.files[0]);
+      fileInput.value = '';
+    });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/') && file.type !== 'application/pdf') return;
+      if (file.size > 3.5 * 1024 * 1024) {
+        showToast('Please keep certificate files under 3.5 MB', true);
+        return;
+      }
+      fileNameDisplay.textContent = file.name;
+      currentFileName = file.name;
+      const reader = new FileReader();
+      reader.onload = e => {
+        currentFileData = e.target.result;
+        if (file.type.startsWith('image/')) {
+          fileThumb.src = currentFileData;
+          fileThumb.style.display = 'block';
+        } else {
+          fileThumb.src = '';
+          fileThumb.style.display = 'none';
+        }
+        filePreview.classList.add('show');
+        dropZone.style.display = 'none';
+        updateLivePreview();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    fileRemoveBtn.addEventListener('click', clearFile);
+
+    function clearFile() {
+      currentFileData = null;
+      currentFileName = null;
+      fileInput.value = '';
+      filePreview.classList.remove('show');
+      dropZone.style.display = 'block';
+      updateLivePreview();
+    }
+
+    // ---- Add cert ----
+    document.getElementById('add-cert-btn').addEventListener('click', async () => {
+      const name     = document.getElementById('add-name').value.trim();
+      const issuer   = document.getElementById('add-issuer').value.trim();
+      const year     = document.getElementById('add-year').value.trim();
+      const category = categoryInput.value;
+      const url      = (document.getElementById('add-url').value || '').trim();
+      const msg      = document.getElementById('form-msg');
+
+      if (!name || !issuer || !year) {
+        showMsg(msg, '⚠️ Please fill in name, issuer and year', false);
+        return;
+      }
+
+      if (!/^\d{4}$/.test(year)) {
+        showMsg(msg, '⚠️ Year must be 4 digits (e.g. 2025)', false);
+        return;
+      }
+
+      const button = document.getElementById('add-cert-btn');
+      button.disabled = true;
+      button.textContent = 'Uploading...';
+
+      try {
+        await apiRequest('POST', {
+          id: Date.now() + '_' + Math.random().toString(36).slice(2),
+          name, issuer, year, category, url: url || null,
+          file: currentFileData ? { data: currentFileData, name: currentFileName } : null
+        });
+        resetForm();
+        await renderCertList();
+        showMsg(msg, '✓ Certificate saved online!', true);
+        showToast('Certificate added!');
+      } catch (e) {
+        showMsg(msg, `⚠️ ${e.message}`, false);
+        showToast(e.message, true);
+      } finally {
+        button.disabled = false;
+        button.textContent = '＋ Add Certificate';
+      }
+    });
+
+    document.getElementById('reset-form-btn').addEventListener('click', resetForm);
+
+    function resetForm() {
+      document.getElementById('add-name').value   = '';
+      document.getElementById('add-issuer').value = '';
+      document.getElementById('add-year').value   = '';
+      document.getElementById('add-url').value    = '';
+      // Reset category pills
+      categoryInput.value = 'Security';
+      pills.forEach(p => {
+        p.classList.toggle('selected', p.dataset.cat === 'Security');
+      });
+      clearFile();
+      const msg = document.getElementById('form-msg');
+      msg.style.display = 'none';
+      updateLivePreview();
+    }
+
+    // ---- Render cert list ----
+    async function renderCertList() {
+      const grid = document.getElementById('admin-cert-grid');
+      const empty = document.getElementById('admin-empty');
+      try {
+        const certs = await getCerts();
+        updateStats();
+        if (certs.length === 0) {
+          grid.innerHTML = '';
+          empty.style.display = 'block';
+          return;
+        }
+        empty.style.display = 'none';
+        grid.innerHTML = certs.map(cert => {
+          const catStyle = CAT_STYLES[cert.category] || CAT_STYLES['Other'];
+          const thumb = cert.fileData
+            ? (cert.fileData.match(/\.pdf(?:$|\?)/i)
+              ? `<div class="admin-cert-pdf-thumb">📄<span>PDF Certificate</span></div>`
+              : `<img class="admin-cert-thumb" src="${esc(cert.fileData)}" alt="${esc(cert.name)}" />`)
+            : `<div class="admin-cert-pdf-thumb" style="font-size:1rem;color:#475569">No image</div>`;
+
+          const urlBadge = cert.url
+            ? `<a href="${esc(cert.url)}" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:0.68rem;color:var(--cyan);text-decoration:none;border-bottom:1px dashed rgba(0,212,255,0.3);" title="Verify credential">🔗 Verify</a>`
+            : '';
+
+          return `
+          <div class="admin-cert-card" id="card-${esc(cert.id)}">
+            ${thumb}
+            <div class="admin-cert-body">
+              <div class="admin-cert-name">${esc(cert.name)}</div>
+              <div class="admin-cert-issuer">${esc(cert.issuer)}</div>
+              <div class="admin-cert-date">${esc(cert.year)}</div>
+              <div class="admin-cert-badge-row">
+                <span class="cert-category-tag" style="background:${catStyle.bg};border-color:${catStyle.border};color:${catStyle.color}">${catStyle.emoji} ${esc(cert.category)}</span>
+                ${urlBadge}
+                <button class="admin-delete-btn" onclick="deleteCert('${esc(cert.id)}')">Delete</button>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      } catch (e) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        empty.querySelector('p').textContent = 'Unable to load certificates. Check your Vercel API setup.';
+      }
+    }
+
+    // ---- Delete cert ----
+    async function deleteCert(id) {
+      if (!confirm('Delete this certificate?')) return;
+      try {
+        await apiRequest('DELETE', { id });
+        await renderCertList();
+        showToast('Certificate deleted');
+      } catch (e) {
+        showToast(e.message, true);
+      }
+    }
+
+    window.deleteCert = deleteCert;
+
+    // ---- Clear all ----
+    document.getElementById('clear-all-btn').addEventListener('click', async () => {
+      try {
+        const certs = await getCerts();
+        if (certs.length === 0) return showToast('Nothing to clear', true);
+        if (!confirm('Delete ALL certificates? This cannot be undone.')) return;
+        await apiRequest('DELETE', { all: true });
+        await renderCertList();
+        showToast('All certificates cleared');
+      } catch (e) {
+        showToast(e.message, true);
+      }
+    });
+
+    // ---- Password is managed securely in Vercel Environment Variables ----
+    document.getElementById('change-pw-btn').addEventListener('click', () => {
+      const msg = document.getElementById('pw-msg');
+      showMsg(msg, 'Change ADMIN_PASSWORD in Vercel → Settings → Environment Variables, then redeploy.', false);
+    });
+
+    // ---- Helpers ----
+    function esc(str) {
+      const d = document.createElement('div');
+      d.appendChild(document.createTextNode(String(str)));
+      return d.innerHTML;
+    }
+
+    function showMsg(el, text, success) {
+      el.textContent = text;
+      el.className = 'form-msg ' + (success ? 'success' : 'error');
+      el.style.display = 'inline-block';
+      if (success) setTimeout(() => el.style.display = 'none', 3000);
+    }
+
+    function showToast(text, error = false) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      const toastIcon = document.getElementById('toast-icon');
+      toastText.textContent = text;
+      toastIcon.textContent = error ? '⚠️' : '✓';
+      toast.className = 'toast show' + (error ? ' error' : '');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // Init
+    updateStats();
+    updateLivePreview();
+  </script>
+</body>
+
+</html>
