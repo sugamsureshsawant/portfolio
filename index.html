@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Sugam — Engineering student passionate about cybersecurity and web development. Exploring ethical hacking, CTFs, and building cool things on the web." />
+  <title>Sugam | Student Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="glitch" data-text="S://UGAM">&gt;_ S://UGAM</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certs</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span class="status-text">LEARNING</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">bash — sugam@ubuntu: ~</span>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-line"><span class="prompt">sugam@ubuntu:~$</span> <span class="cmd" id="cmd1"></span></p>
+          <p class="terminal-line" id="line2" style="display:none"><span class="prompt">sugam@ubuntu:~$</span> <span
+              class="cmd" id="cmd2"></span></p>
+          <p class="terminal-line" id="line3" style="display:none"><span class="output" id="cmd3"></span></p>
+          <p class="terminal-line" id="line4" style="display:none"><span class="output" id="cmd4"></span></p>
+          <p class="terminal-line" id="line5" style="display:none"><span class="prompt">sugam@ubuntu:~$</span> <span
+              class="cursor-blink">█</span></p>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <div class="hero-badge">// ENGINEERING STUDENT · B.Engg CSE</div>
+        <h1 class="hero-title">
+          <span class="glitch-hero" data-text="SUGAM">SUGAM</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle"></p>
+        <p class="hero-desc">
+          🔐 Cybersecurity Enthusiast &nbsp;·&nbsp; 🌐 Vibe Developer &nbsp;·&nbsp; 🚩 CTF Player
+        </p>
+        <div class="hero-note">
+          <span class="note-icon">💡</span>
+          Currently learning · building · breaking things (ethically)
+        </div>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary" id="btn-projects">
+            <span>&gt;_ See My Work</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary" id="btn-contact">
+            <span>Say Hello</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 01</span>
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-avatar-wrap">
+          <div class="avatar-frame">
+            <div class="avatar-hex">
+              <div class="hex-inner">
+                <div class="avatar-icon">
+                  <!-- Student hacker icon -->
+                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="33" r="16" stroke="#00ff41" stroke-width="2" />
+                    <path d="M18 82c0-17.67 14.33-32 32-32s32 14.33 32 32" stroke="#00ff41" stroke-width="2"
+                      stroke-linecap="round" />
+                    <!-- Laptop -->
+                    <rect x="30" y="58" width="40" height="26" rx="3" stroke="#00d4ff" stroke-width="1.5" />
+                    <rect x="26" y="84" width="48" height="3" rx="1.5" stroke="#00d4ff" stroke-width="1.5" />
+                    <text x="50" y="74" text-anchor="middle" font-size="10" fill="#00ff41"
+                      font-family="monospace">&gt;_</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="avatar-ring ring1"></div>
+            <div class="avatar-ring ring2"></div>
+            <div class="avatar-ring ring3"></div>
+          </div>
+          <div class="about-status-card">
+            <span class="status-indicator"></span>
+            <div>
+              <p class="status-label">Status</p>
+              <p class="status-value">Open to Opportunities 🎯</p>
+            </div>
+          </div>
+          <div class="college-card">
+            <span class="college-icon">🎓</span>
+            <div>
+              <p class="college-label">Currently studying</p>
+              <p class="college-name">B.Engg — Computer Science</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-info">
+          <div class="code-block">
+            <span class="code-comment">// WHO AM I</span>
+            <p class="code-line"><span class="code-keyword">const</span> <span class="code-var">sugam</span> = {</p>
+            <p class="code-line code-indent"><span class="code-prop">role</span>: <span class="code-string">"Engineering
+                Student (B.Tech CSE)"</span>,</p>
+            <p class="code-line code-indent"><span class="code-prop">location</span>: <span class="code-string">"India
+                🇮🇳"</span>,</p>
+            <p class="code-line code-indent"><span class="code-prop">interests</span>: [<span
+                class="code-string">"Cybersecurity"</span>, <span class="code-string">"Web Dev"</span>, <span
+                class="code-string">"CTF"</span>],</p>
+            <p class="code-line code-indent"><span class="code-prop">learning</span>: <span class="code-string">"Every.
+                Single. Day."</span>,</p>
+            <p class="code-line code-indent"><span class="code-prop">vibe</span>: <span class="code-string">"Build,
+                Break, Learn, Repeat 🔁"</span></p>
+            <p class="code-line">};</p>
+          </div>
+
+          <p class="about-bio">
+            Hey! I'm Sugam, a Computer Science engineering student with a huge passion for
+            <span class="accent">cybersecurity</span> and <span class="accent-cyan">web development</span>.
+            I spend my weekends playing CTF challenges, building fun web projects, and exploring ethical hacking
+            concepts.
+            From base to cloud, I'm on my way there! 🚀
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-num" data-target="20">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">CTFs Solved</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="8">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Certs Earned</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+          </div>
+
+          <div class="learning-track">
+            <p class="track-label">// Currently exploring</p>
+            <div class="track-tags">
+              <span class="track-tag active">🔐 Web Hacking</span>
+              <span class="track-tag">🐧 Linux</span>
+              <span class="track-tag active">⚛️ React.js</span>
+              <span class="track-tag">🕵️ OSINT</span>
+              <span class="track-tag active">🐍 Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 02</span>
+        <h2 class="section-title">Skills &amp; <span class="accent">Interests</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">Still learning — here's where I'm at 📍</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">🔐</span> Cybersecurity</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>Web App Testing (Basics)</span><span class="skill-pct">80%</an>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="80"></div>
+              </div>
+            </div>
+            <div class=" skill-bar-item">
+              <div class="skill-label"><span>Linux & Terminal</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>Networking Fundamentals</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>CTF Challenges</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">🌐</span> Web Development</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>HTML / CSS</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill cyan" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>JavaScript</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill cyan" data-width="70"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>Python</span><span class="skill-pct">68%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill cyan" data-width="68"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-label"><span>React.js (Learning)</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill cyan" data-width="70"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools I Use -->
+      <div class="tools-section">
+        <p class="tools-label">// Tools I use & explore</p>
+        <div class="tools-grid">
+          <div class="tool-tag"><span class="tool-dot"></span>Kali Linux</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>VS Code</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Burp Suite</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>Git & GitHub</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Nmap</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>Wireshark</div>
+          <div class="tool-tag"><span class="tool-dot"></span>TryHackMe</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>HackTheBox</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Python Scripts</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>Figma</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Postman</div>
+          <div class="tool-tag"><span class="tool-dot cyan-dot"></span>Docker (basics)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03</span>
+        <h2 class="section-title">My <span class="accent">Projects</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">Things I built while learning 🛠️</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card" id="proj-1">
+          <div class="project-header">
+            <div class="project-icon">🔍</div>
+            <div class="project-badges">
+              <span class="proj-badge security">Security</span>
+            </div>
+          </div>
+          <h3 class="project-title">Port Scanner (Python)</h3>
+          <p class="project-desc">A beginner Python script that scans open ports on a target machine. Built to
+            understand how Nmap works under the hood. First ever security tool I wrote!</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Sockets</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/sugamsureshsawant" target="_blank" rel="noopener noreferrer" class="proj-link-text">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card" id="proj-2">
+          <div class="project-header">
+            <div class="project-icon">🌐</div>
+            <div class="project-badges">
+              <span class="proj-badge web">Web Dev</span>
+            </div>
+          </div>
+          <h3 class="project-title">Legal Firm Management System</h3>
+          <p class="project-desc">A legal firm management system acting as a Role Based Access Control software
+            with a well-bifurcated case management and doc segregation section.</p>
+          <div class="project-tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">API</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/sugamsureshsawant" target="_blank" rel="noopener noreferrer" class="proj-link-text">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card" id="proj-3">
+          <div class="project-header">
+            <div class="project-icon">🚩</div>
+            <div class="project-badges">
+              <span class="proj-badge ctf">Geopolitical Blog</span>
+            </div>
+          </div>
+          <h3 class="project-title">Geopolitical Blog</h3>
+          <p class="project-desc">My personal collection of writeups for Geopolitical and Historical Events.
+            my learning journey through various social predicaments and international puzzles.</p>
+          <div class="project-tags">
+            <span class="tag">Geopolitical</span>
+            <span class="tag">Historical</span>
+            <span class="tag">Writeups</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="proj-link-text">Read Blog →</a>
+          </div>
+        </div>
+
+        <div class="project-card" id="proj-4">
+          <div class="project-header">
+            <div class="project-icon">🛡️</div>
+            <div class="project-badges">
+              <span class="proj-badge web">OS Security</span>
+            </div>
+          </div>
+          <h3 class="project-title">DaemonOS</h3>
+          <p class="project-desc">A Security Oriented Debian Stable altered Operating System focused on user security
+            optimization with inbuild firewall and manual port authenticator (with some more additional features)</p>
+          <div class="project-tags">
+            <span class="tag">C/C++</span>
+            <span class="tag">OS Hardening</span>
+            <span class="tag">Debian</span>
+          </div>
+          <div class="project-footer">
+          </div>
+        </div>
+
+        <div class="project-card" id="proj-5">
+          <div class="project-header">
+            <div class="project-icon">🎭</div>
+            <div class="project-badges">
+              <span class="proj-badge security">Networking</span>
+            </div>
+          </div>
+          <h3 class="project-title">VPN</h3>
+          <p class="project-desc">A Virtul Private Network and traverses through internet via IP Translation
+            technique with security orineted protocols.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Network Security</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/sugamsureshsawant" target="_blank" rel="noopener noreferrer" class="proj-link-text">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card wip-card" id="proj-6">
+          <div class="project-header">
+            <div class="project-icon">🚧</div>
+            <div class="project-badges">
+              <span class="proj-badge wip">In Progress</span>
+            </div>
+          </div>
+          <h3 class="project-title">Web Vulnerability Lab</h3>
+          <p class="project-desc">Building a local vulnerable web app to practice SQLi, XSS, and CSRF attacks safely.
+            Inspired by DVWA. Currently in development — learning as I build!</p>
+          <div class="project-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Docker</span>
+          </div>
+          <div class="project-footer">
+            <span class="wip-text">⏳ Coming soon...</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section (Display Only) -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 04</span>
+        <h2 class="section-title">Certifi<span class="accent">cations</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">Courses & certs I've completed 📜</p>
+      </div>
+
+      <div class="cert-gallery" id="cert-gallery">
+        <!-- Certificates loaded from localStorage via admin panel -->
+        <!-- Default placeholder shown when no certs exist -->
+      </div>
+
+      <div class="cert-empty" id="cert-empty" style="display:none">
+        <div class="empty-icon">📭</div>
+        <p>No certificates added yet.</p>
+        <span class="empty-sub">Check back soon!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 05</span>
+        <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">Internships, collabs, or just wanna talk tech? Hit me up! 👋</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro">
+            I'm always open to learning from others, collaborating on projects, or hearing about internship
+            opportunities.
+            <span class="accent">Don't be shy!</span>
+          </p>
+
+          <div class="contact-items">
+            <div class="contact-item" id="contact-email">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <p class="contact-label">Email</p>
+                <p class="contact-value"><a href="mailto:daemondistro@gmail.com" style="color:inherit;text-decoration:none;">daemondistro@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item" id="contact-location">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="contact-label">Based in</p>
+                <p class="contact-value">India 🇮🇳</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/sugamsureshsawant" target="_blank" rel="noopener noreferrer" class="social-btn" id="social-github" title="GitHub (sugamsureshsawant)">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/_sugam_sawant_?igsh=MW4wOW9taHZxMTc1OQ==" target="_blank" rel="noopener noreferrer" class="social-btn" id="social-instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M7 1h10a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6H7a6 6 0 0 1-6-6V7a6 6 0 0 1 6-6zm0 2A4 4 0 0 0 3 7v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4H7zm5 4.5A4.5 4.5 0 1 1 12 16.5a4.5 4.5 0 0 1 0-9zm0 2A2.5 2.5 0 1 0 12 14.5a2.5 2.5 0 0 0 0-5zm5.5-3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="What's your name?" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email-field">Email</label>
+            <input type="email" id="contact-email-field" class="form-input" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">What's up?</label>
+            <input type="text" id="contact-subject" class="form-input"
+              placeholder="Internship, collab, just saying hi..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea id="contact-message" class="form-textarea" rows="5" placeholder="Tell me more..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+            <span>&gt;_ Send it!</span>
+          </button>
+          <div class="form-success" id="form-success" style="display:none">
+            <span class="success-icon">✓</span> Got it! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">
+        <span class="accent">&lt;</span> Made with 𓆩☠︎︎𓆪 by Sugam <span class="accent">/&gt;</span>
+      </p>
+      <p class="footer-sub">
+        <span class="prompt-small">sugam@ubuntu:~$</span> <span id="footer-time"></span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
