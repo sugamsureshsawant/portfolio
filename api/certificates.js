@@ -15,6 +15,7 @@ async function writeData(certs) {
   await put(DATA_PATH, JSON.stringify(certs), {
     access: 'public',
     addRandomSuffix: false,
+    allowOverwrite: true,
     contentType: 'application/json',
     cacheControlMaxAge: 0,
   });
