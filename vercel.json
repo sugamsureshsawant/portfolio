@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/daemon",
-      "destination": "/admin.html"
-    }
-  ]
-}
